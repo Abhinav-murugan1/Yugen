@@ -110,28 +110,29 @@ const Collab = () => {
           </p>
         </section>
 
-        {/* Vertical Collab Cards */}
-        <section className="max-w-6xl mx-auto space-y-8">
-          {collabs.map((collab, index) => (
-            <div
-              key={collab.id}
-              className="group relative h-[400px] overflow-hidden cursor-pointer animate-fade-in"
-              style={{ animationDelay: `${index * 150}ms` }}
-              onMouseEnter={() => setHoveredCard(collab.id)}
-              onMouseLeave={() => setHoveredCard(null)}
-              onClick={() => setSelectedCollab(collab)}
-            >
-              {/* Hero-style Card */}
-              <div className="flex h-full border-2 border-border transition-all duration-700 hover:border-primary hover:shadow-[0_20px_60px_-15px_hsl(var(--primary)/0.4)]">
-                {/* Image Area - 70% */}
-                <div className="w-[70%] relative overflow-hidden">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
-                    style={{
-                      backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url(${collab.products[0].image})`,
-                      transform: hoveredCard === collab.id ? "scale(1.1)" : "scale(1)",
-                    }}
-                  />
+        {/* Horizontal Collab Cards */}
+        <section className="w-full px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {collabs.map((collab, index) => (
+              <div
+                key={collab.id}
+                className="group relative h-[500px] overflow-hidden cursor-pointer animate-fade-in"
+                style={{ animationDelay: `${index * 150}ms` }}
+                onMouseEnter={() => setHoveredCard(collab.id)}
+                onMouseLeave={() => setHoveredCard(null)}
+                onClick={() => setSelectedCollab(collab)}
+              >
+                {/* Hero-style Card */}
+                <div className="flex flex-col h-full border-2 border-border transition-all duration-700 hover:border-primary hover:shadow-[0_20px_60px_-15px_hsl(var(--primary)/0.4)]">
+                  {/* Image Area - 60% */}
+                  <div className="h-[60%] relative overflow-hidden">
+                    <div
+                      className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
+                      style={{
+                        backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url(${collab.products[0].image})`,
+                        transform: hoveredCard === collab.id ? "scale(1.1)" : "scale(1)",
+                      }}
+                    />
                   
                   {/* Animated Overlay */}
                   <div 
@@ -160,11 +161,11 @@ const Collab = () => {
                     <Badge className="bg-primary text-primary-foreground text-sm px-4 py-2">
                       {collab.products.length} Products
                     </Badge>
+                    </div>
                   </div>
-                </div>
 
-                {/* Details Area - 30% */}
-                <div className="w-[30%] bg-card flex items-center p-8 relative overflow-hidden">
+                  {/* Details Area - 40% */}
+                  <div className="h-[40%] bg-card flex items-center p-6 relative overflow-hidden">
                   {/* Background Pattern */}
                   <div 
                     className="absolute inset-0 opacity-5 transition-opacity duration-700"
@@ -175,66 +176,67 @@ const Collab = () => {
                     }}
                   />
 
-                  <div className="relative z-10 w-full">
-                    {/* Accent Line */}
-                    <div 
-                      className="h-1 bg-primary mb-6 transition-all duration-700"
-                      style={{
-                        width: hoveredCard === collab.id ? "64px" : "32px",
-                      }}
-                    />
-                    
-                    {/* Title */}
-                    <h2 
-                      className="text-3xl lg:text-4xl font-black mb-4 tracking-tighter uppercase transition-all duration-500"
-                      style={{
-                        transform: hoveredCard === collab.id ? "translateX(8px)" : "translateX(0)",
-                        color: hoveredCard === collab.id ? "hsl(var(--primary))" : "hsl(var(--foreground))",
-                      }}
-                    >
-                      {collab.name}
-                    </h2>
-                    
-                    {/* Description */}
-                    <p 
-                      className="text-muted-foreground mb-3 transition-all duration-500 text-lg"
-                      style={{
-                        transform: hoveredCard === collab.id ? "translateX(8px)" : "translateX(0)",
-                        opacity: hoveredCard === collab.id ? 1 : 0.8,
-                      }}
-                    >
-                      {collab.description}
-                    </p>
-                    
-                    {/* Tagline */}
-                    <p 
-                      className="text-sm text-muted-foreground/70 italic mb-6 transition-all duration-700"
-                      style={{
-                        transform: hoveredCard === collab.id ? "translateX(8px) translateY(0)" : "translateX(0) translateY(10px)",
-                        opacity: hoveredCard === collab.id ? 1 : 0,
-                      }}
-                    >
-                      {collab.tagline}
-                    </p>
+                    <div className="relative z-10 w-full">
+                      {/* Accent Line */}
+                      <div 
+                        className="h-1 bg-primary mb-4 transition-all duration-700"
+                        style={{
+                          width: hoveredCard === collab.id ? "64px" : "32px",
+                        }}
+                      />
+                      
+                      {/* Title */}
+                      <h2 
+                        className="text-2xl lg:text-3xl font-black mb-3 tracking-tighter uppercase transition-all duration-500"
+                        style={{
+                          transform: hoveredCard === collab.id ? "translateY(-4px)" : "translateY(0)",
+                          color: hoveredCard === collab.id ? "hsl(var(--primary))" : "hsl(var(--foreground))",
+                        }}
+                      >
+                        {collab.name}
+                      </h2>
+                      
+                      {/* Description */}
+                      <p 
+                        className="text-muted-foreground mb-2 transition-all duration-500 text-sm"
+                        style={{
+                          transform: hoveredCard === collab.id ? "translateY(-4px)" : "translateY(0)",
+                          opacity: hoveredCard === collab.id ? 1 : 0.8,
+                        }}
+                      >
+                        {collab.description}
+                      </p>
+                      
+                      {/* Tagline */}
+                      <p 
+                        className="text-xs text-muted-foreground/70 italic mb-4 transition-all duration-700"
+                        style={{
+                          transform: hoveredCard === collab.id ? "translateY(0)" : "translateY(10px)",
+                          opacity: hoveredCard === collab.id ? 1 : 0,
+                        }}
+                      >
+                        {collab.tagline}
+                      </p>
 
-                    {/* CTA */}
-                    <div
-                      className="transition-all duration-700"
-                      style={{
-                        transform: hoveredCard === collab.id ? "translateX(8px) translateY(0)" : "translateX(0) translateY(10px)",
-                        opacity: hoveredCard === collab.id ? 1 : 0,
-                      }}
-                    >
-                      <Button className="btn-hero group/btn">
-                        View Collection
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                      </Button>
+                      {/* CTA */}
+                      <div
+                        className="transition-all duration-700"
+                        style={{
+                          transform: hoveredCard === collab.id ? "translateY(0)" : "translateY(10px)",
+                          opacity: hoveredCard === collab.id ? 1 : 0,
+                        }}
+                      >
+                        <Button className="btn-hero group/btn">
+                          View Collection
+                          <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </section>
       </main>
 
