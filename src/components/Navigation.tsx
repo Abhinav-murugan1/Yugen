@@ -30,7 +30,7 @@ const Navigation = () => {
     { name: "Home", href: "/" },
     { name: "Collabs", href: "/collab" },
     { name: "Shop", href: "/shop" },
-    { name: "About", href: "#about" },
+    { name: "About", href: "/about" },
   ];
 
   return (
@@ -58,7 +58,7 @@ const Navigation = () => {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => {
-                  if (link.href === "/" || link.href === "/collab" || link.href === "/shop") {
+                  if (link.href.startsWith('/')) {
                     e.preventDefault();
                     navigate(link.href);
                   }
@@ -126,7 +126,7 @@ const Navigation = () => {
                   href={link.href}
                   className="block text-foreground hover:text-primary transition-colors font-medium"
                   onClick={(e) => {
-                    if (link.href === "/" || link.href === "/collab" || link.href === "/shop") {
+                    if (link.href.startsWith('/')) {
                       e.preventDefault();
                       navigate(link.href);
                     }

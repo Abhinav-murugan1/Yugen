@@ -56,16 +56,12 @@ const CustomCursor = () => {
         transform: `translate(${position.x - 6}px, ${position.y - 6}px)`,
       }}
     >
-      {/* Main cursor dot */}
+      {/* Main cursor dot - static size */}
       <div
-        className={`w-3 h-3 rounded-full bg-primary transition-all duration-200 ease-out ${
-          isHovering 
-            ? 'scale-[2] animate-glow-pulse' 
-            : 'scale-100'
-        }`}
+        className="w-3 h-3 rounded-full bg-primary transition-opacity duration-200 ease-out"
         style={{
           boxShadow: isHovering 
-            ? '0 0 20px hsl(var(--primary)), 0 0 40px hsl(var(--primary)), 0 0 60px hsl(var(--primary))'
+            ? '0 0 20px hsl(var(--primary)), 0 0 40px hsl(var(--primary))'
             : '0 0 10px hsl(var(--primary))'
         }}
       />
@@ -73,7 +69,7 @@ const CustomCursor = () => {
       {/* Outer ring for hover state */}
       {isHovering && (
         <div 
-          className="absolute top-1/2 left-1/2 w-8 h-8 border border-primary/50 rounded-full animate-ping"
+          className="absolute top-1/2 left-1/2 w-6 h-6 border border-primary/50 rounded-full"
           style={{
             transform: 'translate(-50%, -50%)'
           }}

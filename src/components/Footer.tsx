@@ -11,7 +11,7 @@ const Footer = () => {
       { name: "Gift Cards", href: "#" }
     ],
     Company: [
-      { name: "About Us", href: "#" },
+      { name: "About Us", href: "/about" },
       { name: "Careers", href: "#" },
       { name: "Press", href: "#" },
       { name: "Sustainability", href: "#" }
@@ -70,6 +70,12 @@ const Footer = () => {
                     <li key={link.name}>
                       <a
                         href={link.href}
+                        onClick={(e) => {
+                          if (link.href.startsWith('/')) {
+                            e.preventDefault();
+                            window.location.href = link.href;
+                          }
+                        }}
                         className="text-muted-foreground hover:text-primary transition-colors duration-300 animated-underline"
                       >
                         {link.name}

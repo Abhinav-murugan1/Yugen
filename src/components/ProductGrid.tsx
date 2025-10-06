@@ -7,6 +7,7 @@ import productHoodie from "@/assets/product-hoodie.jpg";
 import productSneakers from "@/assets/product-sneakers.jpg";
 import productJacket from "@/assets/product-jacket.jpg";
 
+// TODO: This product data will be managed via Admin panel in the future
 const products = [
   {
     id: 1,

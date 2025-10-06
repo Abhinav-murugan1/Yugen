@@ -263,13 +263,13 @@ All colors MUST be HSL for consistency and theming support.
     @apply grid grid-cols-1 lg:grid-cols-2 gap-12 items-center;
   }
 
-  /* Spacing System */
+  /* Spacing System - Mobile-first (9:16 optimized) */
   .section-padding {
-    @apply px-6 md:px-12 lg:px-24;
+    @apply px-4 sm:px-6 md:px-12 lg:px-24;
   }
 
   .section-margin {
-    @apply py-24 md:py-32 lg:py-40;
+    @apply py-16 sm:py-24 md:py-32 lg:py-40;
   }
 
   /* Text Gradients */

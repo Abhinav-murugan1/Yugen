@@ -10,6 +10,8 @@ import productHoodie from "@/assets/product-hoodie.jpg";
 import productSneakers from "@/assets/product-sneakers.jpg";
 import productJacket from "@/assets/product-jacket.jpg";
 
+// TODO: This product data will be managed via Admin panel in the future
+// Products, reviews, sizes, colors, and prices will all be editable through admin interface
 const products = [
   {
     id: 1,
@@ -218,9 +220,9 @@ const Product = () => {
           Back to Shop
         </Button>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
           {/* Product Image */}
-          <div className="relative aspect-[4/5] overflow-hidden bg-card border-2 border-border">
+          <div className="relative aspect-[3/4] lg:aspect-[4/5] overflow-hidden bg-card border-2 border-border">
             <img
               src={product.image}
               alt={product.name}
@@ -240,39 +242,39 @@ const Product = () => {
 
           {/* Product Details */}
           <div className="flex flex-col">
-            <div className="text-sm text-muted-foreground mb-2 uppercase tracking-wider">
+            <div className="text-xs md:text-sm text-muted-foreground mb-2 uppercase tracking-wider">
               {product.category}
             </div>
-            <h1 className="text-4xl md:text-5xl font-black mb-4 tracking-tighter">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4 tracking-tighter">
               {product.name}
             </h1>
             
-            <div className="flex items-center gap-4 mb-6">
-              <span className="text-3xl font-bold text-primary">
+            <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
+              <span className="text-2xl md:text-3xl font-bold text-primary">
                 {product.price}
               </span>
               {product.originalPrice && (
-                <span className="text-xl text-muted-foreground line-through">
+                <span className="text-lg md:text-xl text-muted-foreground line-through">
                   {product.originalPrice}
                 </span>
               )}
             </div>
 
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-base md:text-lg text-muted-foreground mb-6 md:mb-8 leading-relaxed">
               {product.description}
             </p>
 
             {/* Size Selection */}
-            <div className="mb-6">
-              <label className="block text-sm font-semibold mb-3 uppercase tracking-wider">
+            <div className="mb-4 md:mb-6">
+              <label className="block text-xs md:text-sm font-semibold mb-2 md:mb-3 uppercase tracking-wider">
                 Select Size
               </label>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2 md:gap-3">
                 {product.sizes.map((size) => (
                   <button
                     key={size}
                     onClick={() => setSelectedSize(size)}
-                    className={`px-6 py-3 border-2 font-semibold transition-all duration-200 cursor-interactive ${
+                    className={`px-4 md:px-6 py-2 md:py-3 border-2 font-semibold transition-all duration-200 cursor-interactive text-sm md:text-base ${
                       selectedSize === size
                         ? "border-primary bg-primary text-primary-foreground"
                         : "border-border hover:border-primary"
@@ -285,16 +287,16 @@ const Product = () => {
             </div>
 
             {/* Color Selection */}
-            <div className="mb-8">
-              <label className="block text-sm font-semibold mb-3 uppercase tracking-wider">
+            <div className="mb-6 md:mb-8">
+              <label className="block text-xs md:text-sm font-semibold mb-2 md:mb-3 uppercase tracking-wider">
                 Select Color
               </label>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2 md:gap-3">
                 {product.colors.map((color) => (
                   <button
                     key={color}
                     onClick={() => setSelectedColor(color)}
-                    className={`px-6 py-3 border-2 font-semibold transition-all duration-200 cursor-interactive ${
+                    className={`px-4 md:px-6 py-2 md:py-3 border-2 font-semibold transition-all duration-200 cursor-interactive text-sm md:text-base ${
                       selectedColor === color
                         ? "border-primary bg-primary text-primary-foreground"
                         : "border-border hover:border-primary"
@@ -307,23 +309,23 @@ const Product = () => {
             </div>
 
             {/* Quantity */}
-            <div className="mb-8">
-              <label className="block text-sm font-semibold mb-3 uppercase tracking-wider">
+            <div className="mb-6 md:mb-8">
+              <label className="block text-xs md:text-sm font-semibold mb-2 md:mb-3 uppercase tracking-wider">
                 Quantity
               </label>
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3 md:gap-4">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="w-12 h-12 border-2 border-border hover:border-primary transition-all duration-200 font-semibold cursor-interactive"
+                  className="w-10 h-10 md:w-12 md:h-12 border-2 border-border hover:border-primary transition-all duration-200 font-semibold cursor-interactive text-sm md:text-base"
                 >
                   -
                 </button>
-                <span className="text-xl font-semibold min-w-[3rem] text-center">
+                <span className="text-lg md:text-xl font-semibold min-w-[2.5rem] md:min-w-[3rem] text-center">
                   {quantity}
                 </span>
                 <button
                   onClick={() => setQuantity(quantity + 1)}
-                  className="w-12 h-12 border-2 border-border hover:border-primary transition-all duration-200 font-semibold cursor-interactive"
+                  className="w-10 h-10 md:w-12 md:h-12 border-2 border-border hover:border-primary transition-all duration-200 font-semibold cursor-interactive text-sm md:text-base"
                 >
                   +
                 </button>
@@ -331,36 +333,36 @@ const Product = () => {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex gap-4 mb-8">
+            <div className="flex gap-3 md:gap-4 mb-6 md:mb-8">
               <Button
-                className="flex-1 btn-hero"
+                className="flex-1 btn-hero text-sm md:text-base"
                 onClick={handleAddToCart}
               >
-                <ShoppingBag className="h-5 w-5 mr-2" />
+                <ShoppingBag className="h-4 w-4 md:h-5 md:w-5 mr-2" />
                 Add to Cart
               </Button>
               <Button
                 variant="outline"
                 size="icon"
-                className={`h-14 w-14 border-2 cursor-interactive ${
+                className={`h-12 w-12 md:h-14 md:w-14 border-2 cursor-interactive ${
                   isFavorite ? "text-red-500 border-red-500" : ""
                 }`}
                 onClick={() => setIsFavorite(!isFavorite)}
               >
                 <Heart
-                  className={`h-6 w-6 ${isFavorite ? "fill-current" : ""}`}
+                  className={`h-5 w-5 md:h-6 md:w-6 ${isFavorite ? "fill-current" : ""}`}
                 />
               </Button>
             </div>
 
             {/* Product Details */}
-            <div className="border-t border-border pt-8">
-              <h3 className="text-xl font-bold mb-4 uppercase tracking-wider">
+            <div className="border-t border-border pt-6 md:pt-8">
+              <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 uppercase tracking-wider">
                 Product Details
               </h3>
               <ul className="space-y-2">
                 {product.details.map((detail, index) => (
-                  <li key={index} className="text-muted-foreground flex items-start">
+                  <li key={index} className="text-sm md:text-base text-muted-foreground flex items-start">
                     <span className="text-primary mr-2">•</span>
                     {detail}
                   </li>
@@ -373,58 +375,60 @@ const Product = () => {
 
       <ProductReviews reviews={product.reviews} />
       
-      {/* You Might Like Section */}
+      {/* You Might Like Section - Scrollable */}
       <section className="section-padding py-16 border-t border-border">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-black mb-12 tracking-tighter">
+          <h2 className="text-2xl md:text-3xl font-black mb-8 tracking-tighter">
             You Might Like
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {products
-              .filter(p => p.id !== product.id)
-              .map((item) => (
-                <div
-                  key={item.id}
-                  onClick={() => navigate(`/product/${item.id}`)}
-                  className="group cursor-interactive"
-                >
-                  <div className="relative aspect-[4/5] overflow-hidden bg-card border-2 border-border mb-4 transition-all duration-300 group-hover:border-primary">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    {item.isNew && (
-                      <Badge className="absolute top-4 left-4 bg-primary text-primary-foreground">
-                        New
-                      </Badge>
-                    )}
-                    {item.originalPrice && (
-                      <Badge variant="destructive" className="absolute top-4 left-4 bg-red-500">
-                        Sale
-                      </Badge>
-                    )}
-                  </div>
-                  <div className="space-y-2">
-                    <p className="text-sm text-muted-foreground uppercase tracking-wider">
-                      {item.category}
-                    </p>
-                    <h3 className="text-xl font-bold tracking-tight group-hover:text-primary transition-colors">
-                      {item.name}
-                    </h3>
-                    <div className="flex items-center gap-2">
-                      <span className="text-lg font-bold text-primary">
-                        {item.price}
-                      </span>
+          <div className="overflow-x-auto pb-4 -mx-6 px-6 md:mx-0 md:px-0">
+            <div className="flex gap-4 md:gap-6 min-w-min">
+              {products
+                .filter(p => p.id !== product.id)
+                .map((item) => (
+                  <div
+                    key={item.id}
+                    onClick={() => navigate(`/product/${item.id}`)}
+                    className="group cursor-interactive flex-shrink-0 w-[200px] md:w-[240px]"
+                  >
+                    <div className="relative aspect-[3/4] overflow-hidden bg-card border-2 border-border mb-3 transition-all duration-300 group-hover:border-primary">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      {item.isNew && (
+                        <Badge className="absolute top-2 left-2 text-xs bg-primary text-primary-foreground">
+                          New
+                        </Badge>
+                      )}
                       {item.originalPrice && (
-                        <span className="text-sm text-muted-foreground line-through">
-                          {item.originalPrice}
-                        </span>
+                        <Badge variant="destructive" className="absolute top-2 left-2 text-xs bg-red-500">
+                          Sale
+                        </Badge>
                       )}
                     </div>
+                    <div className="space-y-1">
+                      <p className="text-xs text-muted-foreground uppercase tracking-wider">
+                        {item.category}
+                      </p>
+                      <h3 className="text-sm md:text-base font-bold tracking-tight group-hover:text-primary transition-colors line-clamp-1">
+                        {item.name}
+                      </h3>
+                      <div className="flex items-center gap-2">
+                        <span className="text-base font-bold text-primary">
+                          {item.price}
+                        </span>
+                        {item.originalPrice && (
+                          <span className="text-xs text-muted-foreground line-through">
+                            {item.originalPrice}
+                          </span>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+            </div>
           </div>
         </div>
       </section>

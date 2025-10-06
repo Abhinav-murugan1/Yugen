@@ -10,6 +10,7 @@ import Admin from "./pages/Admin";
 import Cart from "./pages/Cart";
 import Collab from "./pages/Collab";
 import Shop from "./pages/Shop";
+import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/cart" element={<Cart />} />
           <Route path="/collab" element={<Collab />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/about" element={<About />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
