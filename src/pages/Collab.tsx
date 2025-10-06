@@ -99,9 +99,9 @@ const Collab = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
 
-      <main className="container mx-auto px-4 py-24">
+      <main className="w-full py-24">
         {/* Hero Section */}
-        <section className="text-center mb-20 animate-fade-in">
+        <section className="text-center mb-20 animate-fade-in container mx-auto px-4">
           <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tighter">
             Collaborations
           </h1>
@@ -110,8 +110,8 @@ const Collab = () => {
           </p>
         </section>
 
-        {/* Vertical Collab Cards */}
-        <section className="max-w-6xl mx-auto space-y-8">
+        {/* Full Width Collab Cards */}
+        <section className="w-full space-y-8">
           {collabs.map((collab, index) => (
             <div
               key={collab.id}
